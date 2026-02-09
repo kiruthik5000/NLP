@@ -87,3 +87,41 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ----------------------------------------
+import re
+import string
+
+def clean_text(text):
+    """
+    Cleans and normalizes input text for NLP processing.
+    """
+    if not isinstance(text, str):
+        return ""
+
+    text = text.lower()
+
+    # Remove URLs
+    text = re.sub(r'http\S+|www\S+', '', text)
+
+    # Remove numbers
+    text = re.sub(r'\d+', '', text)
+
+    # Remove punctuation
+    text = text.translate(str.maketrans('', '', string.punctuation))
+
+    # Remove extra whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    return text
+
+
+def split_labels(label_text):
+    """
+    Converts comma-separated emotion labels into a list.
+    """
+    if not isinstance(label_text, str):
+        return []
+
+    labels = [label.strip() for label in label_text.split(',')]
+    return [label for label in labels if label]

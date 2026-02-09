@@ -1,13 +1,6 @@
 import os
 import sys
 import warnings
-import pandas as pd
-
-from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import accuracy_score
-
 from nlp_utils import clean_text, split_data
 
 warnings.simplefilter("ignore")
